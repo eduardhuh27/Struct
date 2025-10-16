@@ -30,7 +30,7 @@ void preencher (funcio dados[])
     for (i=0;i<3;i++)
     {   
         printf("Nome:");
-        scanf("%s",&dados[i].nome);
+        scanf("%s",dados[i].nome);
         printf("Genero (M ou F):");
         scanf(" %c",&dados[i].genero);
         printf("Matricula:");
@@ -43,32 +43,34 @@ void preencher (funcio dados[])
 
 void organizar (funcio dados[], char genero)
 {
-    int i,j;
+    int i=0,j=2;
     funcio temp;
-    for(i=0,j=2;i<j;i++,j--)
+    while(i<j)
     { 
-        while (i < j && dados[i].genero == genero) {
+        if (dados[i].genero == genero)
+        {
             i++;
         }
 
-        
-        while (i < j && dados[j].genero != genero) {
-            j--;
-        }
-
-        
-        if (i < j)
+        else
         {
-                   temp=dados[i]; 
-                   
-                   printf("\n");
-                   dados[i]=dados[j];
-                   exibir (dados);
-                   printf("\n");
-                   dados[j]=temp; 
-                    exibir (dados);
-                    printf("\n");
-                }
+            if (dados[j].genero != genero) 
+            {
+                j--;
+            }
+            else
+                {
+                       temp=dados[i];  
+                       printf("\n");
+                       dados[i]=dados[j];
+                      // exibir (dados);
+                       printf("\n");
+                       dados[j]=temp; 
+                      //  exibir (dados);
+                        printf("\n");
+                        i++;
+                        j--;
+                }}
     }
         
     exibir (dados);
